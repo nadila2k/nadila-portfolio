@@ -1,6 +1,7 @@
 import React from "react";
-import profileImage from "../../public/cv.jpg";
+import profileImage from "../../public/cv.png";
 import { motion } from "motion/react";
+import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function Hero() {
   return (
@@ -22,7 +23,7 @@ export default function Hero() {
           />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y:50 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex max-w-[600px] flex-col items-center justify-center gap-4 text-center"
@@ -33,17 +34,50 @@ export default function Hero() {
           <h3 className="bg-gradient-to-r from-purple-400 to-orange-600 bg-clip-text text-transparent opacity-80 text-2xl font-semibold transition-all duration-300 hover:opacity-100 font-light md:text-3xl">
             Web Developer
           </h3>
+          <ul className="flex justify-center gap-5 mt-5">
+            <li>
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=Nadilanawod@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-500 hover:text-orange-500 transition-all duration-300 text-3xl"
+              >
+                <FaEnvelope />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/nadila-nawod-ba977921b/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-500 hover:text-orange-500 transition-all duration-300 text-3xl"
+              >
+                <FaLinkedin />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/nadila2k"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-500 hover:text-orange-500 transition-all duration-300 text-3xl"
+              >
+                <FaGithub />
+              </a>
+            </li>
+          </ul>
           <p className="md:text-base text-pretty text-sm text-gray-300">
-            Subject: Clarification on CIS 6035 Final Project Submission –
-            November 2024 Intake Dear Madushan Fonseka, I hope you are doing
-            well. I am writing to clarify the submission requirements for CIS
-            6035 – Development Project (Final Project), November 2024 Intake. On
-            Moodle, the submission portal for the project is now open and due on
-            Sunday, 7 September 2025 at 2:00 PM. I would like to confirm: Do we
-            need to upload our source code as a ZIP file directly to this
-            submission portal? Regarding the final report, should we attach it
-            along with the project files in this submission, or will it need to
-            be uploaded later in the feedback section after this submission?
+            I am a motivated and adaptable Software Engineering undergraduate
+            who has completed a Higher Diploma in Computing and Software
+            Engineering and recently finished my BSc (Hons) Software
+            Engineering, with final results pending confirmation. Through
+            academic projects and self-learning, I have developed strong skills
+            in full-stack development, API integration, and database management.
+            Proficient in Java, JavaScript, React, Express.js, Spring Boot, and
+            PostgreSQL, I enjoy designing and developing scalable, user-friendly
+            applications. With a passion for problem-solving and continuous
+            learning, I am eager to contribute effectively to a dynamic software
+            engineering team while further advancing my professional expertise.
           </p>
         </motion.div>
       </div>

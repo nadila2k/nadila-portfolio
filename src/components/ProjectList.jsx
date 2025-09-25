@@ -1,14 +1,18 @@
 import React from "react";
 import { motion } from "motion/react";
+import { a } from "motion/react-client";
 
 export default function ProjectList({ project }) {
   return (
-    <motion.div
+    <motion.a
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
+      viewport={{ once: false }}
       className="flex flex-col items-center gap-8 md:flex-row md:gap-24"
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       <img
         src={project.image}
@@ -28,6 +32,6 @@ export default function ProjectList({ project }) {
           ))}
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }

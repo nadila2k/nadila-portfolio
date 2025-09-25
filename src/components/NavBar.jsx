@@ -1,11 +1,13 @@
 import React, { use, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import ScrollLinks from "./ScrollLinks";
 import { BiMenu, BiX } from "react-icons/bi";
 import { div } from "motion/react-client";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const menuOpen = () => setIsOpen((prev) => !prev);
 
@@ -18,10 +20,27 @@ export default function NavBar() {
         Nadila
       </Link>
       <ul className="hidden md:flex gap-10">
-        <Link to="/">Home</Link>
-        <ScrollLinks to="tech">Tech</ScrollLinks>
-        <ScrollLinks to="projects">Projects</ScrollLinks>
-        <ScrollLinks to="contact">Contact</ScrollLinks>
+        {location.pathname === "/" ? (
+          <>
+            <ScrollLinks to="home">Home</ScrollLinks>
+            <ScrollLinks to="tech">Tech</ScrollLinks>
+            <ScrollLinks to="projects">Projects</ScrollLinks>
+            <ScrollLinks to="contact">Contact</ScrollLinks>
+          </>
+        ) : (
+          <NavLink to="/">Home</NavLink>
+        )}
+
+        {/* <NavLink
+          to="profile"
+          className={({ isActive }) =>
+            isActive
+              ? "text-white"
+              : "text-gray-300 hover:text-white transition"
+          }
+        >
+          Profile
+        </NavLink> */}
       </ul>
       {isOpen ? (
         <BiX className="block md:hidden text-4xl" onClick={menuOpen} />
