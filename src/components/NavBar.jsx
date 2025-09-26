@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import ScrollLinks from "./ScrollLinks";
 import { BiMenu, BiX } from "react-icons/bi";
 import { div } from "motion/react-client";
+import { FaEnvelope, FaUser } from "react-icons/fa";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +32,7 @@ export default function NavBar() {
           <NavLink to="/">Home</NavLink>
         )}
 
-        {/* <NavLink
+        <NavLink
           to="profile"
           className={({ isActive }) =>
             isActive
@@ -40,7 +41,15 @@ export default function NavBar() {
           }
         >
           Profile
-        </NavLink> */}
+        </NavLink>
+      </ul>
+      <ul className="hidden md:flex gap-6">
+        <NavLink
+          to="auth/sign-in"
+          className="text-purple-500 hover:text-orange-500 transition-all duration-300 text-3xl"
+        >
+          <FaUser />
+        </NavLink>
       </ul>
       {isOpen ? (
         <BiX className="block md:hidden text-4xl" onClick={menuOpen} />
