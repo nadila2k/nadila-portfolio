@@ -1,5 +1,5 @@
 import React from "react";
-import profileImage from "../../public/cv.png";
+import heroImg from "../assets/heroImg.png";
 import { motion } from "motion/react";
 import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
@@ -87,7 +87,7 @@ export default function Hero() {
             className="flex items-center justify-center"
           >
             <img
-              src={profileImage}
+              src={heroImg}
               alt=""
               className="w-[250px] cursor-pointer rounded-full   shadow-xl shadow-indigo-900 transition-all duration-300 hover:-translate-y-5 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-600 md:W-[350px] "
             />
