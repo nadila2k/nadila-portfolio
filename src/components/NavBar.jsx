@@ -20,27 +20,10 @@ export default function NavBar() {
         Nadila
       </Link>
       <ul className="hidden md:flex gap-10">
-        {location.pathname === "/" ? (
-          <>
-            <ScrollLinks to="home">Home</ScrollLinks>
-            <ScrollLinks to="tech">Tech</ScrollLinks>
-            <ScrollLinks to="projects">Projects</ScrollLinks>
-            <ScrollLinks to="contact">Contact</ScrollLinks>
-          </>
-        ) : (
-          <NavLink to="/">Home</NavLink>
-        )}
-
-        {/* <NavLink
-          to="profile"
-          className={({ isActive }) =>
-            isActive
-              ? "text-white"
-              : "text-gray-300 hover:text-white transition"
-          }
-        >
-          Profile
-        </NavLink> */}
+        <ScrollLinks to="home">Home</ScrollLinks>
+        <ScrollLinks to="tech">Tech</ScrollLinks>
+        <ScrollLinks to="projects">Projects</ScrollLinks>
+        <ScrollLinks to="contact">Contact</ScrollLinks>
       </ul>
       {isOpen ? (
         <BiX className="block md:hidden text-4xl" onClick={menuOpen} />
@@ -54,7 +37,7 @@ export default function NavBar() {
             isOpen ? "block" : "hidden"
           } `}
         >
-          <Link to="/">Home</Link>
+          <ScrollLinks to="hero">Home</ScrollLinks>
           <ScrollLinks to="tech">Tech</ScrollLinks>
           <ScrollLinks to="projects">Projects</ScrollLinks>
           <ScrollLinks to="contact">Contact</ScrollLinks>
