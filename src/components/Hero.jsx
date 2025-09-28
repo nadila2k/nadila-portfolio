@@ -7,22 +7,22 @@ export default function Hero() {
   return (
     <div
       id="hero"
-      className="px-16 flex min-h-screen w-full items-center justify-center py-28 md:px32"
+      className="px-6 md:px-16 flex min-h-screen w-full items-center justify-center py-28"
     >
-      <div className="flex   items-center justify-center gap-50 text-white">
+      <div className="flex  flex-col-reverse md:flex-row  items-center justify-center gap-50 md:gap-6 text-white">
         <div>
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-             viewport={{ once: false }} 
+            viewport={{ once: false }}
             className="flex max-w-[600px] flex-col items-center justify-center gap-4 text-center"
           >
             <h1 className="bg-gradient-to-r from-orange-400 to-purple-600 bg-clip-text text-transparent opacity-80 text-3xl font-semibold transition-all duration-300 hover:opacity-100 font-light md:text-7xl ">
               Nadila Nawod
             </h1>
             <h3 className="bg-gradient-to-r from-purple-400 to-orange-600 bg-clip-text text-transparent opacity-80 text-2xl font-semibold transition-all duration-300 hover:opacity-100 font-light md:text-3xl">
-               Software Engineer Intern
+              Software Engineer Intern
             </h3>
             <ul className="flex justify-center gap-5 mt-5">
               <li>
@@ -83,13 +83,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-             viewport={{ once: false }} 
+            viewport={{ once: false }}
             className="flex items-center justify-center"
           >
             <img
               src={heroImg}
               alt=""
-              className="w-[250px] cursor-pointer rounded-full   shadow-xl shadow-indigo-900 transition-all duration-300 hover:-translate-y-5 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-600 md:W-[350px] "
+              className="w-[250px] cursor-pointer rounded-full md:w-[100px]   shadow-xl shadow-indigo-900 transition-all duration-300 hover:-translate-y-5 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-600  "
             />
           </motion.div>
         </div>
