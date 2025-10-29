@@ -6,11 +6,44 @@ import cafeimage from "../../public/ProjectsImage/cafeimage.png";
 import dogfood from "../../public/ProjectsImage/dogfood.png";
 import erpJava from "../../public/ProjectsImage/erpJava.png";
 import blog from "../../public/ProjectsImage/blog.png";
-
-
-
+import tasteaura from "../../public/ProjectsImage/tasteaura.png";
 
 const projectData = [
+  {
+    image: tasteaura,
+    title: "TasteAura – Food & Beverage Platform",
+    description:
+      "A full-stack cloud-hosted platform for restaurant management, online ordering, and customer engagement. Includes authentication, image hosting, and responsive design for seamless user experiences.",
+    techStack: [
+      "React.js",
+      "Vite",
+      "Redux Toolkit",
+      "TailwindCSS",
+      "Spring Boot",
+      "Java 17",
+      "Docker",
+      "Neon PostgreSQL",
+      "Render",
+      "Vercel",
+      "Cloudinary",
+      "JWT",
+      "Axios",
+    ],
+    repositories: [
+      {
+        reponame: "Live Demo",
+        link: "https://tasteaura-frontend.vercel.app/",
+      },
+      {
+        reponame: "Frontend Repo",
+        link: "https://github.com/nadila2k/tasteaura-frontend.git",
+      },
+      {
+        reponame: "Backend Repo",
+        link: "https://github.com/nadila2k/tasteaura-backend.git",
+      },
+    ],
+  },
   {
     image: agri,
     title: "AgriConnect",
@@ -28,7 +61,12 @@ const projectData = [
       "Firebase",
       "JWT",
     ],
-    link: "https://github.com/nadila2k/AgriConnect-v2.git",
+    repositories: [
+      {
+        reponame: "GitHub Repo",
+        link: "https://github.com/nadila2k/AgriConnect-v2.git",
+      },
+    ],
   },
   {
     image: megacitycab,
@@ -43,8 +81,16 @@ const projectData = [
       "Lombok",
       "PostgreSQL",
     ],
-    link: "https://github.com/nadila2k/MegaCityCabClient", // frontend
-    // Backend also available: "https://github.com/nadila2k/MegaCityCabApi"
+    repositories: [
+      {
+        reponame: "Frontend Repo",
+        link: "https://github.com/nadila2k/MegaCityCabClient.git",
+      },
+      {
+        reponame: "Backend Repo",
+        link: "https://github.com/nadila2k/MegaCityCabApi.git",
+      },
+    ],
   },
   {
     image: AgriConnectv1,
@@ -60,7 +106,12 @@ const projectData = [
       "PostgreSQL",
       "REST APIs",
     ],
-    link: "https://github.com/nadila2k/agrihub-backend-api.git",
+    repositories: [
+      {
+        reponame: "Backend Repo",
+        link: "https://github.com/nadila2k/agrihub-backend-api.git",
+      },
+    ],
   },
   {
     image: blog,
@@ -76,7 +127,12 @@ const projectData = [
       "AWS S3",
       "OpenAI API",
     ],
-    link: "https://github.com/nadila2k/blog-api.git",
+    repositories: [
+      {
+        reponame: "GitHub Repo",
+        link: "https://github.com/nadila2k/blog-api.git",
+      },
+    ],
   },
   {
     image: dogfood,
@@ -84,7 +140,12 @@ const projectData = [
     description:
       "A mobile application for dog lovers to find toys, food, vitamins, and share knowledge about dog care.",
     techStack: ["React.js", "React Native", "Firebase", "CSS"],
-    link: "https://github.com/nadila2k/DogFoodApp.git",
+    repositories: [
+      {
+        reponame: "GitHub Repo",
+        link: "https://github.com/nadila2k/DogFoodApp.git",
+      },
+    ],
   },
   {
     image: cafeimage,
@@ -92,7 +153,12 @@ const projectData = [
     description:
       "A web application for restaurant bookings, reservations, and beverage orders, built using pure PHP and MySQL.",
     techStack: ["PHP", "HTML5", "JavaScript", "JSON", "MySQL"],
-    link: "https://github.com/nadila2k/TheGalleryCafe.git",
+    repositories: [
+      {
+        reponame: "GitHub Repo",
+        link: "https://github.com/nadila2k/TheGalleryCafe.git",
+      },
+    ],
   },
   {
     image: erpJava,
@@ -100,7 +166,12 @@ const projectData = [
     description:
       "A human resource management desktop application to manage employees, calculate salaries, and handle HR tasks.",
     techStack: ["Java", "JavaFX", "MySQL"],
-    link: "https://github.com/nadila2k/Colombo-Institute-Employee-Management-System.git",
+    repositories: [
+      {
+        reponame: "GitHub Repo",
+        link: "https://github.com/nadila2k/Colombo-Institute-Employee-Management-System.git",
+      },
+    ],
   },
   {
     image: bakeryimage,
@@ -108,7 +179,12 @@ const projectData = [
     description:
       "A console application for a bakery, managing baking schedules, calculating prices, and listing items.",
     techStack: ["C++", "OOP"],
-    link: "https://github.com/nadila2k/bakery_automated_billing_system.git",
+    repositories: [
+      {
+        reponame: "GitHub Repo",
+        link: "https://github.com/nadila2k/bakery_automated_billing_system.git",
+      },
+    ],
   },
 ];
 
