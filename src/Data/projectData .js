@@ -1,12 +1,13 @@
-import agri from "../../public/ProjectsImage/agriv2.png";
-import megacitycab from "../../public/ProjectsImage/megacitycab.png";
-import AgriConnectv1 from "../../public/ProjectsImage/AgriConnectv1.jpg";
-import bakeryimage from "../../public/ProjectsImage/bakeryimage.png";
-import cafeimage from "../../public/ProjectsImage/cafeimage.png";
-import dogfood from "../../public/ProjectsImage/dogfood.png";
-import erpJava from "../../public/ProjectsImage/erpJava.png";
-import blog from "../../public/ProjectsImage/blog.png";
-import tasteaura from "../../public/ProjectsImage/tasteaura.png";
+/* Images are in /public/ProjectsImage/ — reference them as URL strings (no import needed) */
+const agri         = "/ProjectsImage/agriv2.png";
+const megacitycab  = "/ProjectsImage/megacitycab.png";
+const AgriConnectv1 = "/ProjectsImage/AgriConnectv1.jpg";
+const bakeryimage  = "/ProjectsImage/bakeryimage.png";
+const cafeimage    = "/ProjectsImage/cafeimage.png";
+const dogfood      = "/ProjectsImage/dogfood.png";
+const erpJava      = "/ProjectsImage/erpJava.png";
+const blog         = "/ProjectsImage/blog.png";
+const tasteaura    = "/ProjectsImage/tasteaura.png";
 
 const projectData = [
   {
@@ -31,16 +32,20 @@ const projectData = [
     ],
     repositories: [
       {
-        reponame: "Live Demo",
-        link: "https://tasteaura-frontend.vercel.app/",
-      },
-      {
         reponame: "Frontend Repo",
         link: "https://github.com/nadila2k/tasteaura-frontend.git",
       },
       {
         reponame: "Backend Repo",
         link: "https://github.com/nadila2k/tasteaura-backend.git",
+      },
+      {
+        reponame: "Live Demo - Client App",
+        link: "https://tasteaura-client.vercel.app/",
+      },
+      {
+        reponame: "Live Demo - Admin Panel",
+        link: "https://tasteaura-admin.vercel.app/",
       },
     ],
   },

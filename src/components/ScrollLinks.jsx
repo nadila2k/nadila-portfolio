@@ -1,8 +1,20 @@
-import React from 'react'
+import React from "react";
 import { Link as ScrollLink } from "react-scroll";
 
-export default function ScrollLinks({children, to, }) {
+export default function ScrollLinks({ children, to, onClick }) {
   return (
-    <ScrollLink duration={500} to={to} smooth={true} className='cursor-pointer opacity-70 transition-all duration-300 hover:opacity-100'>{children}</ScrollLink>
-  )
+    <ScrollLink
+      to={to}
+      smooth
+      duration={500}
+      offset={-80}
+      onClick={onClick}
+      className="cursor-pointer transition-colors duration-200"
+      style={{ color: "var(--text-secondary)" }}
+      activeClass="active-scroll-link"
+      spy
+    >
+      {children}
+    </ScrollLink>
+  );
 }
