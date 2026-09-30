@@ -96,20 +96,20 @@ export default function NavBar() {
         }}
       >
         {/* Mobile-friendly padding: tight on small screens, wide on desktop */}
-        <div className="flex w-full items-center justify-between px-5 py-5 sm:px-8 sm:py-6 md:justify-evenly md:px-16">
+        <div className="mx-auto w-full max-w-6xl flex items-center justify-between px-5 sm:px-8 lg:px-10 py-3 md:py-4">
 
           {/* Logo */}
           <Link
             to="/"
             className="text-2xl sm:text-3xl font-semibold transition-all duration-300"
             style={{
-              background: "linear-gradient(135deg, #fb923c 0%, #a855f7 100%)",
+              background: "linear-gradient(135deg, #22d3ee 0%, #8b5cf6 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
               opacity: 0.9,
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.filter = "drop-shadow(0 0 12px rgba(168,85,247,0.4))"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.filter = "drop-shadow(0 0 12px rgba(139,92,246,0.4))"; }}
             onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.9"; e.currentTarget.style.filter = "none"; }}
             aria-label="Home"
           >
@@ -117,38 +117,40 @@ export default function NavBar() {
           </Link>
 
           {/* Desktop nav */}
-          <ul className="hidden md:flex gap-10 items-center" role="navigation" aria-label="Main navigation">
-            {NAV_ITEMS.map(({ label, to }) => {
-              const isActive = active === to;
-              return (
-                <li key={to} className="relative">
-                  <ScrollLink
-                    to={to}
-                    smooth
-                    duration={500}
-                    offset={-80}
-                    spy
-                    aria-current={isActive ? "page" : undefined}
-                    className="relative cursor-pointer select-none text-base font-medium outline-none transition-all duration-200 py-1"
-                    style={{ color: isActive ? "#22d3ee" : "rgba(255,255,255,0.6)" }}
-                    onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.color = "rgba(255,255,255,0.95)"; }}
-                    onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.color = "rgba(255,255,255,0.6)"; }}
-                    onClick={() => setActive(to)}
-                  >
-                    {label}
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-underline"
-                        className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full"
-                        style={{ background: "linear-gradient(90deg, #22d3ee, #a855f7)" }}
-                        transition={{ type: "spring", stiffness: 400, damping: 35 }}
-                      />
-                    )}
-                  </ScrollLink>
-                </li>
-              );
-            })}
-          </ul>
+          <nav className="hidden md:flex items-center" aria-label="Main navigation">
+            <ul className="flex gap-6 lg:gap-10 items-center">
+              {NAV_ITEMS.map(({ label, to }) => {
+                const isActive = active === to;
+                return (
+                  <li key={to} className="relative">
+                    <ScrollLink
+                      to={to}
+                      smooth
+                      duration={500}
+                      offset={-80}
+                      spy
+                      aria-current={isActive ? "page" : undefined}
+                      className="relative cursor-pointer select-none text-base font-medium outline-none transition-all duration-200 py-1"
+                      style={{ color: isActive ? "#22d3ee" : "rgba(255,255,255,0.6)" }}
+                      onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.color = "rgba(255,255,255,0.95)"; }}
+                      onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.color = "rgba(255,255,255,0.6)"; }}
+                      onClick={() => setActive(to)}
+                    >
+                      {label}
+                      {isActive && (
+                        <motion.span
+                          layoutId="nav-underline"
+                          className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full"
+                          style={{ background: "linear-gradient(90deg, #22d3ee, #8b5cf6)" }}
+                          transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                        />
+                      )}
+                    </ScrollLink>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
 
           {/* Mobile hamburger */}
           <button
@@ -222,7 +224,7 @@ export default function NavBar() {
                 <span
                   className="text-2xl font-semibold"
                   style={{
-                    background: "linear-gradient(135deg, #fb923c 0%, #a855f7 100%)",
+                    background: "linear-gradient(135deg, #22d3ee 0%, #8b5cf6 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -263,7 +265,7 @@ export default function NavBar() {
                         offset={-80}
                         onClick={close}
                         aria-current={isActive ? "page" : undefined}
-                        className="flex cursor-pointer items-center justify-between rounded-xl px-8 py-6 gap-6 transition-all duration-200 group"
+                        className="flex cursor-pointer items-center justify-between rounded-xl px-8 py-4 gap-6 transition-all duration-200 group"
                         style={{
                           color: isActive ? "#22d3ee" : "rgba(255,255,255,0.65)",
                           background: isActive ? "rgba(34,211,238,0.08)" : "transparent",
@@ -308,7 +310,7 @@ export default function NavBar() {
                 style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
               >
                 <p className="font-mono text-xs" style={{ color: "rgba(255,255,255,0.2)" }}>
-                  Nadila Nawod · 2025
+                  Nadila Nawod · {new Date().getFullYear()}
                 </p>
               </div>
             </motion.div>

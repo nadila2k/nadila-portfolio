@@ -38,8 +38,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full flex items-center justify-center overflow-hidden pb-24 md:pb-32"
-      style={{ paddingTop: "160px", marginTop: "40px" }}
+      className="relative w-full section flex items-center justify-center overflow-hidden"
       aria-label="Contact"
     >
       {/* Subtle glow */}

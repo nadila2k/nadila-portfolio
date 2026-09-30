@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import { FaGithub, FaExternalLinkAlt, FaGlobe, FaUserShield } from "react-icons/fa";
 
-/* Fixed image panel dimensions — consistent across all cards */
-const PANEL_H = 240; // mobile/fallback height (px)
+/* Use aspect-ratio instead of fixed heights */
 
 /* Pick an icon based on the link's label */
 function getLiveLinkIcon(reponame) {
@@ -20,9 +19,9 @@ function getLiveLinkLabel(reponame) {
 export default function ProjectList({ project, index }) {
   const [imgHovered, setImgHovered] = useState(false);
 
-  /* All live (non-GitHub) links — shown in image hover overlay */
+  /* All live (non-GitHub) links */
   const liveLinks = project.repositories?.filter((r) => !r.link?.includes("github.com")) ?? [];
-  /* GitHub repos — shown at the bottom */
+  /* GitHub repos */
   const repoLinks = project.repositories?.filter((r) => r.link?.includes("github.com")) ?? [];
 
   return (
@@ -31,19 +30,19 @@ export default function ProjectList({ project, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, delay: Math.min(index * 0.05, 0.3), ease: [0.22, 1, 0.36, 1] }}
-      className="card group relative overflow-hidden flex flex-col md:flex-row md:gap-6 h-full"
+      className="card group relative overflow-hidden flex flex-col lg:flex-row h-full"
     >
-      {/* ── Image panel — no padding, object-cover fills edge to edge ── */}
+      {/* ── Image panel ── */}
       <div
-        className="relative shrink-0 cursor-pointer overflow-hidden md:w-[300px] lg:w-[320px]"
-        style={{ height: PANEL_H, minHeight: PANEL_H }}
+        className="relative shrink-0 cursor-pointer overflow-hidden w-full lg:w-[320px] aspect-[16/10] lg:aspect-auto"
         onMouseEnter={() => setImgHovered(true)}
         onMouseLeave={() => setImgHovered(false)}
       >
-        {/* Full-bleed image — no gap/padding */}
         <motion.img
           src={project.image}
           alt={`${project.title} screenshot`}
+          loading="lazy"
+          decoding="async"
           animate={{ scale: imgHovered ? 1.04 : 1 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="h-full w-full object-cover object-center"
@@ -52,59 +51,19 @@ export default function ProjectList({ project, index }) {
         {/* Bottom gradient + index watermark */}
         <div
           className="absolute inset-0 flex items-end p-5 pointer-events-none"
-          style={{ background: "linear-gradient(to top, rgba(10,10,15,0.82) 0%, transparent 55%)" }}
+          style={{ background: "linear-gradient(to top, rgba(7,8,13,0.82) 0%, transparent 55%)" }}
         >
           <span
-            className="font-mono text-6xl font-bold leading-none select-none"
+            className="font-mono text-5xl lg:text-6xl font-bold leading-none select-none"
             style={{ color: "rgba(255,255,255,0.07)" }}
           >
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
-
-        {/* Hover overlay — shows ALL live links (Live Demo, Client App, Admin Panel…) */}
-        {liveLinks.length > 0 && (
-          <motion.div
-            animate={{ opacity: imgHovered ? 1 : 0 }}
-            transition={{ duration: 0.2 }}
-            className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 p-4"
-            style={{ background: "rgba(10,10,15,0.58)", backdropFilter: "blur(5px)" }}
-          >
-            {liveLinks.map((link) => {
-              const Icon = getLiveLinkIcon(link.reponame);
-              const label = getLiveLinkLabel(link.reponame);
-              return (
-                <a
-                  key={link.reponame}
-                  href={link.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={link.reponame}
-                  className="flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-150 w-full max-w-[220px] justify-center text-center"
-                  style={{
-                    background: "rgba(34,211,238,0.12)",
-                    border: "1px solid rgba(34,211,238,0.35)",
-                    color: "var(--accent-primary)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(34,211,238,0.24)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(34,211,238,0.12)";
-                  }}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Icon size={10} />
-                  {label}
-                </a>
-              );
-            })}
-          </motion.div>
-        )}
       </div>
 
       {/* ── Content panel ── */}
-      <div className="flex flex-1 flex-col gap-5 p-6 md:p-7">
+      <div className="flex flex-1 flex-col gap-5 p-5 md:p-6 lg:p-7">
         {/* Title + description */}
         <div className="flex flex-col gap-3">
           <h3
@@ -130,7 +89,7 @@ export default function ProjectList({ project, index }) {
           ))}
         </div>
 
-        {/* Bottom bar — GitHub repos + live links, all same style */}
+        {/* Bottom bar — GitHub repos + live links */}
         {(repoLinks.length > 0 || liveLinks.length > 0) && (
           <div
             className="mt-auto flex flex-wrap items-center gap-4 pt-4 border-t"

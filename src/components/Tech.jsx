@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import {
   FaCss3Alt, FaHtml5, FaJava, FaJs, FaPhp, FaPython, FaReact,
 } from "react-icons/fa";
 import { BiLogoTypescript } from "react-icons/bi";
 import {
   SiExpress, SiFastapi, SiMongodb, SiNextdotjs, SiPostgresql, SiSpringboot,
-  SiSupabase, SiTailwindcss, SiDocker, SiGit,
+  SiSupabase, SiTailwindcss, SiDocker, SiGit, SiMysql, SiMui, SiFirebase
 } from "react-icons/si";
 
 const CATEGORIES = [
@@ -15,40 +15,43 @@ const CATEGORIES = [
     color: "#22d3ee",
     items: [
       { name: "HTML5",       icon: FaHtml5,        color: "#e34f26" },
-      { name: "CSS3",        icon: FaCss3Alt,       color: "#1572b6" },
-      { name: "JavaScript",  icon: FaJs,            color: "#f7df1e" },
-      { name: "React",       icon: FaReact,         color: "#61dafb" },
-      { name: "Next.js",     icon: SiNextdotjs,     color: "#ffffff" },
-      { name: "TailwindCSS", icon: SiTailwindcss,   color: "#38bdf8" },
+      { name: "CSS3",        icon: FaCss3Alt,      color: "#1572b6" },
+      { name: "JavaScript",  icon: FaJs,           color: "#f7df1e" },
+      { name: "React",       icon: FaReact,        color: "#61dafb" },
+      { name: "Next.js",     icon: SiNextdotjs,    color: "#ffffff" },
+      { name: "Material UI", icon: SiMui,          color: "#007fff" },
+      { name: "TailwindCSS", icon: SiTailwindcss,  color: "#38bdf8" },
     ],
   },
   {
     label: "Backend",
     color: "#f59e0b",
     items: [
-      { name: "Java",        icon: FaJava,          color: "#f89820" },
-      { name: "Spring Boot", icon: SiSpringboot,    color: "#6db33f" },
-      { name: "Express.js",  icon: SiExpress,       color: "#d1d5db" },
-      { name: "PHP",         icon: FaPhp,           color: "#7a86b8" },
-      { name: "Python",      icon: FaPython,        color: "#3776ab" },
-      { name: "FastAPI",     icon: SiFastapi,       color: "#009688" },
+      { name: "Java",        icon: FaJava,         color: "#f89820" },
+      { name: "Spring Boot", icon: SiSpringboot,   color: "#6db33f" },
+      { name: "Express.js",  icon: SiExpress,      color: "#d1d5db" },
+      { name: "Python",      icon: FaPython,       color: "#3776ab" },
+      { name: "FastAPI",     icon: SiFastapi,      color: "#009688" },
+      { name: "PHP",         icon: FaPhp,          color: "#7a86b8" },
     ],
   },
   {
     label: "Database",
     color: "#a78bfa",
     items: [
-      { name: "PostgreSQL",  icon: SiPostgresql,    color: "#336791" },
-      { name: "MongoDB",     icon: SiMongodb,       color: "#47a248" },
-      { name: "Supabase",    icon: SiSupabase,      color: "#3ecf8e" },
+      { name: "MySQL",       icon: SiMysql,        color: "#4479a1" },
+      { name: "PostgreSQL",  icon: SiPostgresql,   color: "#336791" },
+      { name: "MongoDB",     icon: SiMongodb,      color: "#47a248" },
+      { name: "Firebase",    icon: SiFirebase,     color: "#ffca28" },
+      { name: "Supabase",    icon: SiSupabase,     color: "#3ecf8e" },
     ],
   },
   {
     label: "Tools",
     color: "#fb7185",
     items: [
-      { name: "Docker",      icon: SiDocker,        color: "#2496ed" },
-      { name: "Git",         icon: SiGit,           color: "#f05032" },
+      { name: "Git",         icon: SiGit,          color: "#f05032" },
+      { name: "Docker",      icon: SiDocker,       color: "#2496ed" },
     ],
   },
 ];
@@ -68,6 +71,7 @@ const itemVariants = {
 
 function TechItem({ name, icon: Icon, color }) {
   const [hovered, setHovered] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.div
@@ -76,32 +80,34 @@ function TechItem({ name, icon: Icon, color }) {
       onMouseLeave={() => setHovered(false)}
       className="relative flex flex-col items-center gap-2.5 cursor-default"
       style={{ minWidth: 72 }}
+      role="img"
+      aria-label={name}
     >
       {/* Icon container */}
       <motion.div
         animate={{
-          y: hovered ? -4 : 0,
-          scale: hovered ? 1.1 : 1,
+          y: hovered && !shouldReduceMotion ? -4 : 0,
+          scale: hovered && !shouldReduceMotion ? 1.05 : 1,
         }}
         transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="flex h-16 w-16 items-center justify-center rounded-xl"
+        className="flex h-14 w-14 md:h-16 md:w-16 items-center justify-center rounded-xl"
         style={{
           background: hovered
             ? `${color}18`
             : "rgba(255,255,255,0.04)",
-          border: `1px solid ${hovered ? color + "40" : "rgba(255,255,255,0.07)"}`,
-          boxShadow: hovered ? `0 8px 24px ${color}22` : "none",
+          border: `1px solid ${hovered ? color + "60" : "rgba(255,255,255,0.07)"}`,
+          boxShadow: hovered ? `0 12px 32px ${color}33` : "none",
           transition: "background 0.2s, border-color 0.2s, box-shadow 0.2s",
         }}
       >
-        <Icon style={{ fontSize: 30, color: hovered ? color : "#94a3b8" }} />
+        <Icon className="text-2xl md:text-3xl" style={{ color: hovered ? color : "#94a3b8" }} />
       </motion.div>
 
       {/* Tooltip label */}
       <motion.span
-        animate={{ opacity: hovered ? 1 : 0.55 }}
+        animate={{ opacity: hovered ? 1 : 0.6 }}
         transition={{ duration: 0.15 }}
-        className="text-center text-xs font-medium leading-tight"
+        className="text-center text-[11px] md:text-xs font-medium leading-tight"
         style={{ color: hovered ? "var(--text-primary)" : "var(--text-muted)" }}
       >
         {name}
@@ -114,7 +120,7 @@ export default function Tech() {
   return (
     <section
       id="tech"
-      className="w-full min-h-screen flex items-center justify-center py-28"
+      className="w-full section flex items-center justify-center"
       aria-label="Technologies"
     >
       <div className="w-full mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col items-center lg:items-start">
@@ -172,7 +178,7 @@ export default function Tech() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-40px" }}
-                className="flex flex-wrap justify-center gap-6 lg:justify-start"
+                className="grid grid-cols-3 gap-y-6 gap-x-2 sm:grid-cols-4 md:grid-cols-5 lg:flex lg:flex-wrap lg:gap-6 justify-items-center lg:justify-start"
               >
                 {cat.items.map((item) => (
                   <TechItem key={item.name} {...item} />

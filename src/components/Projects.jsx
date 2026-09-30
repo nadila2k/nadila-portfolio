@@ -1,13 +1,13 @@
 import React from "react";
 import { motion } from "motion/react";
-import projectData from "../Data/projectData .js";
+import projectData from "../Data/projectData.js";
 import ProjectList from "./ProjectList";
 
 export default function Projects() {
   return (
     <section
       id="projects"
-      className="w-full min-h-screen flex items-center justify-center py-28 pb-16"
+      className="w-full section flex items-center justify-center"
       aria-label="Projects"
     >
       <div className="w-full mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col items-center lg:items-start">
@@ -31,8 +31,8 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Project grid — uniform card heights via grid */}
-        <div className="w-full grid grid-cols-1 gap-6">
+        {/* Project grid — 1 col mobile, 2 col tablet, 1 col desktop (with horizontal cards) */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 md:gap-6 lg:gap-8">
           {projectData.map((project, index) => (
             <ProjectList key={project.title} project={project} index={index} />
           ))}

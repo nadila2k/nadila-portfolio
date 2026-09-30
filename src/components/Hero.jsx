@@ -61,14 +61,14 @@ export default function Hero() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-        {/* ── Grid: text left / image right (centered on mobile) ── */}
-        <div className="grid grid-cols-1 place-items-center items-center gap-12 lg:grid-cols-[1fr_380px] lg:place-items-start lg:gap-20">
+        {/* ── Layout: Image on top for mobile/tablet, right for desktop ── */}
+        <div className="flex flex-col-reverse items-center gap-12 lg:grid lg:grid-cols-[1fr_380px] lg:place-items-start lg:gap-20">
           {/* ─ Text column ─ */}
           <motion.div
             variants={container}
             initial="hidden"
             animate="visible"
-            className="flex flex-col gap-6 items-center text-center lg:items-start lg:text-left"
+            className="flex flex-col gap-6 items-center text-center lg:items-start lg:text-left w-full"
           >
             {/* Eyebrow */}
             <motion.div
@@ -93,7 +93,16 @@ export default function Hero() {
             >
               Nadila
               <br />
-              <span style={{ color: "var(--accent-primary)" }}>Nawod</span>
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #22d3ee 0%, #8b5cf6 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Nawod
+              </span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -108,7 +117,7 @@ export default function Hero() {
             {/* Bio */}
             <motion.p
               variants={fadeUp}
-              className="max-w-[520px] leading-relaxed"
+              className="max-w-[60ch] leading-relaxed"
               style={{
                 color: "var(--text-secondary)",
                 fontSize: "var(--fs-body)",
@@ -126,13 +135,13 @@ export default function Hero() {
             {/* CTA row */}
             <motion.div
               variants={fadeUp}
-              className="flex flex-wrap items-center justify-center gap-4 pt-2 lg:justify-start"
+              className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 pt-2 lg:justify-start w-full sm:w-auto"
             >
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=Nadilanawod@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
+                className="btn-primary w-full sm:w-auto justify-center"
               >
                 Get in touch
               </a>
@@ -141,7 +150,7 @@ export default function Hero() {
                 smooth
                 duration={500}
                 offset={-80}
-                className="btn-outline cursor-pointer"
+                className="btn-outline cursor-pointer w-full sm:w-auto justify-center"
               >
                 View projects
               </ScrollLink>
@@ -222,34 +231,23 @@ export default function Hero() {
                     "radial-gradient(circle, #f59e0b 0%, transparent 70%)",
                 }}
               />
-              <img
+              <motion.img
                 src={heroImg}
                 alt="Nadila Nawod, Software Engineer"
-                className="relative z-10 w-[240px] md:w-[300px] lg:w-[340px] rounded-2xl object-cover"
+                className="relative z-10 w-[200px] sm:w-[260px] md:w-[300px] lg:w-[340px] rounded-2xl object-cover"
                 style={{
                   border: "1px solid rgba(255,255,255,0.08)",
                   boxShadow:
                     "0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(34,211,238,0.1)",
                 }}
-              />
-              {/* Status badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.4 }}
-                className="absolute -bottom-4 left-4 flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium backdrop-blur-md"
-                style={{
-                  background: "rgba(17,17,24,0.9)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  color: "var(--text-secondary)",
+                animate={{ translateY: [-6, 6, -6] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 6,
+                  ease: "easeInOut",
                 }}
-              >
-                <span
-                  className="h-2 w-2 rounded-full animate-pulse"
-                  style={{ background: "#22c55e" }}
-                />
-                Open to opportunities
-              </motion.div>
+              />
+
             </div>
           </motion.div>
         </div>
